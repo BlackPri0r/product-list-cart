@@ -3,14 +3,17 @@ import Card from "./Card"
 
 
 
+
+
+
 function App() {
   return (
     <>
-      <div className='flex items-start justify-center'>
+      <div className='flex items-start justify-center bg-[#353535]'>
         {/* Left Section */}
-        <div className='w-[826px] h-[1164px] m-[20px]'>
+        <div className='w-[833px] h-[1164px] m-[20px]'>
           <div className="text-[32px] mb-4 m-5">Desserts</div>
-          <div className="flex flex-wrap gap-5 w-[826px] justify-center">
+          <div className="flex flex-wrap gap-5 w-[833px] justify-center">
             <Card/>
             <Card/>
             <Card/>
@@ -24,7 +27,7 @@ function App() {
         </div>
 
         {/* Right Section */}
-        <div className='w-[370px] h-[257px] m-[20px] p-5 bg-[#333333] rounded-md'>
+        <div className='w-[370px] h-[257px] m-[20px] p-5 bg-[#292929] rounded-md'>
           <div className='text-[24px] mb-[24px]'>Your Cart</div>
             
           <div className="flex items-center justify-center flex-col">
