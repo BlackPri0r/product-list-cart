@@ -2,7 +2,18 @@ import React, { useState } from "react";
 import Card from "./Card";
 import Data from "./assets/data.json";
 
-function cardMaker(Data, addToCart) {
+interface Item {
+  image: { desktop: string };
+  name: string;
+  category: string;
+  price: number;
+}
+
+interface CartItem extends Item {
+  quantity: number;
+}
+
+function cardMaker(Data: Item[], addToCart: (item: Item) => void) {
   return Data.map((item, index) => (
     <Card
       key={index}
@@ -16,11 +27,13 @@ function cardMaker(Data, addToCart) {
 }
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (item) => {
+  const addToCart = (item: Item) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.name === item.name);
+      const existingItem = prevItems.find(
+        (cartItem) => cartItem.name === item.name
+      );
       if (existingItem) {
         return prevItems.map((cartItem) =>
           cartItem.name === item.name
@@ -33,14 +46,17 @@ function App() {
     });
   };
 
-  const removeFromCart = (name) => {
+  const removeFromCart = (name: string) => {
     setCartItems((prevItems) =>
       prevItems.filter((cartItem) => cartItem.name !== name)
     );
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const getTotalItems = () => {
@@ -99,6 +115,7 @@ function App() {
                 </button>
               </div>
             ))}
+            <hr></hr>
             <div className="mt-4">Total: ${getTotalPrice().toFixed(2)}</div>
           </div>
         )}

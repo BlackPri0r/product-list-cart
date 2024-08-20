@@ -1,9 +1,42 @@
-import React from "react";
+import { useState } from "react";
 
-function Card({ imageSrc, name, category, price , addToCart}) {
+
+interface CardProps {
+  imageSrc: string;
+  name: string;
+  category: string;
+  price: number;
+  addToCart: () => void;
+}
+
+function Card({ imageSrc, name, category, price , addToCart}: CardProps) {
+  // const [quantity, setQuantity] = useState(0)
+
+  // const increment = () => {
+  //   setQuantity(prevQuantity => prevQuantity + 1)
+  // };
+
+  // const decrementQuantity = () => {
+  //   setQuantity(prevQuantity => (prevQuantity > 0 ? prevQuantity - 1 : 0));
+  // };
+
+  // const handleAddToCart = () => {
+  //   // Add to cart logic here
+  //   addToCart();
+  //   increment();
+  // };
+
+
+
   return (
     <div className="bg-[#1a1a1a] flex rounded-lg flex-col">
       {/* Image and button */}
+
+
+
+
+
+
       <div className="relative w-[252px] h-[242px] ounded-lg flex flex-col items-center">
         <img className="rounded-md" alt={name} src={imageSrc} />
         <button onClick={addToCart} className="absolute flex items-center bottom-[-20px] left-1/2 transform -translate-x-1/2 h-11 w-40 rounded-full border border-[#8a8a8a]">
